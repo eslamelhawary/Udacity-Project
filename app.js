@@ -29,13 +29,15 @@ document.addEventListener('DOMContentLoaded', addingList_item());
 document.addEventListener('scroll', () => {
   for (let section of sections) {
   
-  const rect = section.getBoundingClientRect();
-    if (rect.bottom < window.innerHeight) { section.style.backgroundColor = '#C0C0C0'; }
-    else{section.style.backgroundColor = 'rgba(255, 255, 255, 0.187)'; }
- 
+ const rect = section.getBoundingClientRect();
+    if (((rect.bottom)-300)< (window.innerHeight)){
+      section.style.backgroundColor = 'red';
+    }
+    else if((rect.bottom) > window.innerHeight || document.documentElement.clientHeight)
+    
+    {  section.style.backgroundColor = ''; }
+
 }})
-
-
 
 
 

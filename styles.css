@@ -28,6 +28,14 @@ html {
   top: 50px;
 
 }
+li:hover{
+  color :white;
+  font-size: 1.2em;
+  background: black;
+}
+a{
+  text-decoration: none;
+}
 
 #navbar__list{
   display :flex;
