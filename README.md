@@ -18,3 +18,7 @@ Then I have added my list items dynamically by addigListItem function.
 I also have styled my scroll to top button.
 
 #### I used in my project both MDN & W3school websites to guide me.
+
+
+#   U d a c i t y - L a n d i n g - p a g e - p r o j e c t  
+ 

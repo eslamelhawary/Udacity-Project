@@ -1,51 +1,42 @@
 // My Global variables
 const navBar_menu = document.getElementsByClassName('navbar__menu');
-const navBar_ul = document.getElementById('navbar__list');
-let sections = document.querySelectorAll('section');
+const navBarUl = document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const topButton = document.getElementById('btn');
+const section1 = document.getElementById('section1');
 
 
-//adding the list items dynamically
 function addingList_item() {
-    
-  for (let section of sections) {
+    for (let section of sections) {
+        let sectionName = section.getAttribute('data-nav');
+        let ListItems = document.createElement('li');
+        let anchorTag = document.createElement('button');
+        anchorTag.innerHTML = sectionName;
+        ListItems.appendChild(anchorTag);
+        navBarUl.appendChild(ListItems);
+        anchorTag.addEventListener ('click', () => {
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "end"
+            })
+        })
 
-    sectionName = section.getAttribute('data-nav');
-    sectionId = section.getAttribute('id');
-    let List_item = document.createElement('li');
-    let anchor_tag = document.createElement('a');
-    anchor_tag.innerHTML = sectionName;
-    anchor_tag.setAttribute('href','#'+sectionId)
-    List_item.appendChild(anchor_tag);
-    navBar_ul.appendChild(List_item);
-   }
-
-}
-
-//The addition of the list items is done on page loading
-document.addEventListener('DOMContentLoaded', addingList_item());
-    
-
-//I added here an scroll event listener to fire the change in the element which is in the view port
-document.addEventListener('scroll', () => {
-  for (let section of sections) {
-  
- const rect = section.getBoundingClientRect();
-    if (((rect.bottom)-300)< (window.innerHeight)){
-      section.style.backgroundColor = 'red';
     }
-    else if((rect.bottom) > window.innerHeight || document.documentElement.clientHeight)
-    
-    {  section.style.backgroundColor = ''; }
+    topButton.addEventListener('click', () => {
+        section1.scrollIntoView({
+            behavior: "smooth",
+        block:'end'})
+    })
+}
+//The addition of the list items is done on page loading
 
-}})
-
-
-
-
-
-
-
-
-
-
-
+    function getElementsPosition() { 
+      for (let section of sections) {
+          let sectionPosition = section.getBoundingClientRect();
+          if (sectionPosition.top <= window.innerHeight && sectionPosition.bottom >= window.innerHeight)
+              {section.classList.add('my_class')}
+          else { section.classList.remove('my_class'); }
+}
+    }
+ document.addEventListener('DOMContentLoaded', addingList_item());
+document.addEventListener('scroll', getElementsPosition);
